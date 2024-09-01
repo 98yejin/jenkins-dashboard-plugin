@@ -1,13 +1,39 @@
-# dashboard
+# jenkins-dashboard-plugin
 
 ## Introduction
 
-TODO Describe what your plugin does here
+- Real-time monitoring of jobs, including the ability to check pipeline stages for pipelines.
+- View records of success and failure within a selected time range, with links provided.
+- Filter cron jobs and other types of jobs.
+- View job/pipeline configurations and history.
 
-## Getting started
+## Development
 
-TODO Tell users how to configure your plugin here, include screenshots, pipeline examples and 
-configuration-as-code examples.
+### Getting Started:
+
+To start the application:
+
+```shell
+mvn hpi:run
+```
+
+### Check Code Formatting:
+
+To automatically format your code according to the project’s style guidelines:
+
+```shell
+mvn spotless:apply
+```
+
+### Build the Plugin:
+
+Make sure the plugin can be built successfully:
+
+```shell
+mvn clean verify
+mvn dependency:analyze
+```
+
 
 ## Issues
 
