@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:f="/lib/form">
+    <f:section title="Jenkins Dashboard Plugin">
+        <f:entry>
+            <f:description>
+                This Jenkins plugin offers real-time monitoring of jobs, including pipeline stage tracking, success and failure records with links, advanced filtering for cron and other job types, and easy access to job/pipeline configurations and history.
+            </f:description>
+        </f:entry>
+    </f:section>
     <f:entry title="Database Connection Information" field="dbConnectionInfo">
         <f:textbox />
     </f:entry>
