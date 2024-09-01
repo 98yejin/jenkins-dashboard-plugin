@@ -19,27 +19,65 @@ public class SampleConfiguration extends GlobalConfiguration {
         return ExtensionList.lookupSingleton(SampleConfiguration.class);
     }
 
-    private String label;
+    private String dbConnectionInfo;
+    private int dashboardPort;
+    private int dataRetentionPeriod;
+    private String jobNameRegex;
 
     public SampleConfiguration() {
         // When Jenkins is restarted, load any saved configuration from disk.
         load();
     }
 
-    /** @return the currently configured label, if any */
-    public String getLabel() {
-        return label;
-    }
-
-    /**
-     * Together with {@link #getLabel}, binds to entry in {@code config.jelly}.
-     * @param label the new value of this field
-     */
     @DataBoundSetter
-    public void setLabel(String label) {
-        this.label = label;
+    public void setDbConnectionInfo(String dbConnectionInfo) {
+        this.dbConnectionInfo = dbConnectionInfo;
         save();
     }
+
+    public String getDbConnectionInfo() {
+        return dbConnectionInfo;
+    }
+
+    @DataBoundSetter
+    public void setDashboardPort(int dashboardPort) {
+        this.dashboardPort = dashboardPort;
+        save();
+    }
+
+    public int getDashboardPort() {
+        return dashboardPort;
+    }
+
+    @DataBoundSetter
+    public void setDataRetentionPeriod(int dataRetentionPeriod) {
+        this.dataRetentionPeriod = dataRetentionPeriod;
+        save();
+    }
+
+    public int getDataRetentionPeriod() {
+        return dataRetentionPeriod;
+    }
+
+    @DataBoundSetter
+    public void setJobNameRegex(String jobNameRegex) {
+        this.jobNameRegex = jobNameRegex;
+        save();
+    }
+
+    public String getJobNameRegex() {
+        return jobNameRegex;
+    }
+
+    //    public String getLabel() {
+    //        return label;
+    //    }
+    //
+    //    @DataBoundSetter
+    //    public void setLabel(String label) {
+    //        this.label = label;
+    //        save();
+    //    }
 
     public FormValidation doCheckLabel(@QueryParameter String value) {
         if (StringUtils.isEmpty(value)) {

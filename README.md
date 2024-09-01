@@ -30,7 +30,7 @@ mvn spotless:apply
 Make sure the plugin can be built successfully:
 
 ```shell
-mvn clean verify
+mvn verify
 mvn dependency:analyze
 ```
 
