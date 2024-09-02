@@ -15,7 +15,7 @@
         <f:number default="30" />
     </f:entry>
     <f:entry title="Regular Expression for Job Name" field="jobNameRegex">
-        <f:textbox />
+        <f:textbox default=".*" />
     </f:entry>
     <f:entry title="Database Connection Information" field="dbConnectionInfo">
         <f:textbox />
