@@ -8,9 +8,6 @@
             </f:description>
         </f:entry>
     </f:section>
-    <f:entry title="Database Connection Information" field="dbConnectionInfo">
-        <f:textbox />
-    </f:entry>
     <f:entry title="Dashboard Port" field="dashboardPort">
         <f:number default="8080" />
     </f:entry>
@@ -20,4 +17,27 @@
     <f:entry title="Regular Expression for Job Name" field="jobNameRegex">
         <f:textbox />
     </f:entry>
+    <f:entry title="Database Connection Information" field="dbConnectionInfo">
+        <f:textbox />
+        <f:entry title=" ">
+            <f:validateButton
+                    title="Test Connection"
+                    method="testConnection"
+                    with="dbConnectionInfo"/>
+        </f:entry>
+    </f:entry>
+    <script>
+        function testConnection() {
+            var url = '${rootURL}/plugin/myplugin/testConnection';
+            new Ajax.Request(url, {
+                parameters: {dbConnectionInfo: $('_.dbConnectionInfo').value},
+                onSuccess: function(response) {
+                    alert('Connection successful!');
+                },
+                onFailure: function(response) {
+                    alert('Connection failed: ' + response.responseText);
+                }
+            });
+        }
+    </script>
 </j:jelly>

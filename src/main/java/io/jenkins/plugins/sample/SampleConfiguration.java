@@ -7,6 +7,7 @@ import jenkins.model.GlobalConfiguration;
 import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.DataBoundSetter;
 import org.kohsuke.stapler.QueryParameter;
+import org.kohsuke.stapler.bind.JavaScriptMethod;
 
 /**
  * Example of Jenkins global configuration.
@@ -37,6 +38,23 @@ public class SampleConfiguration extends GlobalConfiguration {
 
     public String getDbConnectionInfo() {
         return dbConnectionInfo;
+    }
+
+    @JavaScriptMethod
+    public FormValidation doTestConnection(@QueryParameter("dbConnectionInfo") final String dbConnectionInfo) {
+        try {
+            // 예시: 데이터베이스 연결 테스트 로직 (JDBC 사용 예)
+            if (dbConnectionInfo == null || dbConnectionInfo.isEmpty()) {
+                return FormValidation.error("Database connection information is empty");
+            }
+
+            // Connection connection = DriverManager.getConnection(dbConnectionInfo);
+            // connection.close();
+
+            return FormValidation.ok("Connection successful!");
+        } catch (Exception e) {
+            return FormValidation.error("Connection failed: " + e.getMessage());
+        }
     }
 
     @DataBoundSetter
