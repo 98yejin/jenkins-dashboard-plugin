@@ -1,13 +1,8 @@
 package io.jenkins.plugins.sample;
 
 import hudson.Extension;
-import hudson.ExtensionList;
-import hudson.util.FormValidation;
 import jenkins.model.GlobalConfiguration;
-import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.DataBoundSetter;
-import org.kohsuke.stapler.QueryParameter;
-import org.kohsuke.stapler.bind.JavaScriptMethod;
 
 @Extension
 public class SampleConfiguration extends GlobalConfiguration {
@@ -92,5 +87,33 @@ public class SampleConfiguration extends GlobalConfiguration {
 
     public boolean isShowDiskUsage() {
         return showDiskUsage;
+    }
+
+    public String getJenkinsUptime() {
+        return SystemMetricsCollector.getJenkinsUptime();
+    }
+
+    public int getOnlineAgentCount() {
+        return SystemMetricsCollector.getOnlineAgentCount();
+    }
+
+    public int getOfflineAgentCount() {
+        return SystemMetricsCollector.getOfflineAgentCount();
+    }
+
+    public int getTotalAgentCount() {
+        return SystemMetricsCollector.getTotalAgentCount();
+    }
+
+    public String getMemoryUsage() {
+        return SystemMetricsCollector.getMemoryUsage();
+    }
+
+    public String getCpuUsage() {
+        return SystemMetricsCollector.getCpuUsage();
+    }
+
+    public String getDiskUsage() {
+        return SystemMetricsCollector.getDiskUsage();
     }
 }
