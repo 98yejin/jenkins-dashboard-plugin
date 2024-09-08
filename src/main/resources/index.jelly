@@ -1,4 +1,4 @@
 <?jelly escape-by-default='true'?>
 <div>
-    Jenkins Dashboard Plugin
+    Jenkins System Monitoring Plugin
 </div>

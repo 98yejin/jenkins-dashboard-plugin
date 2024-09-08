@@ -9,12 +9,14 @@
         </f:entry>
     </f:section>
     <f:entry title="Jenkins System Monitoring">
-        <f:checkbox title="Show Jenkins Uptime" field="showUptime" checked="${instance.showUptime}" />
-        <f:checkbox title="Show Online Agent Count" field="showOnlineAgents" checked="${instance.showOnlineAgents}" />
-        <f:checkbox title="Show Offline Agent Count" field="showOfflineAgents" checked="${instance.showOfflineAgents}" />
-        <f:checkbox title="Show Total Agent Count" field="showTotalAgents" checked="${instance.showTotalAgents}" />
-        <f:checkbox title="Show Memory Usage" field="showMemoryUsage" checked="${instance.showMemoryUsage}" />
-        <f:checkbox title="Show CPU Usage" field="showCpuUsage" checked="${instance.showCpuUsage}" />
-        <f:checkbox title="Show Disk Usage" field="showDiskUsage" checked="${instance.showDiskUsage}" />
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <f:checkbox title="Show Jenkins Uptime" field="showUptime" checked="${instance.showUptime}" />
+            <f:checkbox title="Show Online Agent Count" field="showOnlineAgents" checked="${instance.showOnlineAgents}" />
+            <f:checkbox title="Show Offline Agent Count" field="showOfflineAgents" checked="${instance.showOfflineAgents}" />
+            <f:checkbox title="Show Total Agent Count" field="showTotalAgents" checked="${instance.showTotalAgents}" />
+            <f:checkbox title="Show Memory Usage" field="showMemoryUsage" checked="${instance.showMemoryUsage}" />
+            <f:checkbox title="Show CPU Usage" field="showCpuUsage" checked="${instance.showCpuUsage}" />
+            <f:checkbox title="Show Disk Usage" field="showDiskUsage" checked="${instance.showDiskUsage}" />
+        </div>
     </f:entry>
 </j:jelly>
