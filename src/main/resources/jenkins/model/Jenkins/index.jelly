@@ -1,0 +1,22 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form" xmlns:l="/lib/layout" xmlns:t="/lib/hudson">
+    <l:layout title="${rootURL} - System Monitoring" permission="hudson.model.Hudson.Administer">
+
+        <l:main-panel>
+            <div style="padding:10px; border:1px solid #ccc; background-color:#f9f9f9; margin-bottom:10px;">
+                <h2>Jenkins System Monitoring</h2>
+
+                <ul>
+                    <li><strong>Jenkins Uptime:</strong> ${instance.jenkinsUptime}</li>
+                    <li><strong>Online Agents:</strong> ${instance.onlineAgentCount}</li>
+                    <li><strong>Offline Agents:</strong> ${instance.offlineAgentCount}</li>
+                    <li><strong>Total Agents:</strong> ${instance.totalAgentCount}</li>
+                    <li><strong>Memory Usage:</strong> ${instance.memoryUsage}</li>
+                    <li><strong>CPU Usage:</strong> ${instance.cpuUsage}</li>
+                    <li><strong>Disk Usage:</strong> ${instance.diskUsage}</li>
+                </ul>
+            </div>
+            ${content}
+        </l:main-panel>
+    </l:layout>
+</j:jelly>
