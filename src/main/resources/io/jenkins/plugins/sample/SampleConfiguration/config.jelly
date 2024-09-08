@@ -1,43 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:f="/lib/form">
-    <f:section title="Jenkins Dashboard Plugin">
+    <f:section title="Jenkins System Monitoring Plugin">
         <f:entry>
             <f:description>
                 This Jenkins plugin offers real-time monitoring of jobs, including pipeline stage tracking, success and failure records with links, advanced filtering for cron and other job types, and easy access to job/pipeline configurations and history.
             </f:description>
         </f:entry>
     </f:section>
-    <f:entry title="Dashboard Port" field="dashboardPort">
-        <f:number default="8080" />
+    <f:entry title="Jenkins System Monitoring">
+        <f:checkbox title="Show Jenkins Uptime" field="showUptime" checked="${instance.showUptime}" />
+        <f:checkbox title="Show Online Agent Count" field="showOnlineAgents" checked="${instance.showOnlineAgents}" />
+        <f:checkbox title="Show Offline Agent Count" field="showOfflineAgents" checked="${instance.showOfflineAgents}" />
+        <f:checkbox title="Show Total Agent Count" field="showTotalAgents" checked="${instance.showTotalAgents}" />
+        <f:checkbox title="Show Memory Usage" field="showMemoryUsage" checked="${instance.showMemoryUsage}" />
+        <f:checkbox title="Show CPU Usage" field="showCpuUsage" checked="${instance.showCpuUsage}" />
+        <f:checkbox title="Show Disk Usage" field="showDiskUsage" checked="${instance.showDiskUsage}" />
     </f:entry>
-    <f:entry title="Data Retention Period (days)" field="dataRetentionPeriod">
-        <f:number default="30" />
-    </f:entry>
-    <f:entry title="Regular Expression for Job Name" field="jobNameRegex">
-        <f:textbox default=".*" />
-    </f:entry>
-    <f:entry title="Database Connection Information" field="dbConnectionInfo">
-        <f:textbox />
-        <f:entry title=" ">
-            <f:validateButton
-                    title="Test Connection"
-                    method="testConnection"
-                    with="dbConnectionInfo"/>
-        </f:entry>
-    </f:entry>
-    <script>
-        function testConnection() {
-            var url = '${rootURL}/plugin/myplugin/testConnection';
-            new Ajax.Request(url, {
-                parameters: {dbConnectionInfo: $('_.dbConnectionInfo').value},
-                onSuccess: function(response) {
-                    alert('Connection successful!');
-                },
-                onFailure: function(response) {
-                    alert('Connection failed: ' + response.responseText);
-                }
-            });
-        }
-    </script>
 </j:jelly>
