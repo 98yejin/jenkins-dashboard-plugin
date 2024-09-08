@@ -1,11 +1,11 @@
 package io.jenkins.plugins.sample;
 
-import jenkins.model.Jenkins;
+import com.sun.management.OperatingSystemMXBean;
 import hudson.model.Computer;
+import java.io.File;
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
-import com.sun.management.OperatingSystemMXBean;
-import java.io.File;
+import jenkins.model.Jenkins;
 
 public class SystemMetricsCollector {
     public static int getOnlineAgentCount() {
@@ -34,14 +34,16 @@ public class SystemMetricsCollector {
 
     public static String getMemoryUsage() {
         Runtime runtime = Runtime.getRuntime();
-        long totalMemory = runtime.totalMemory();  // in bytes
-        long freeMemory = runtime.freeMemory();    // in bytes
+        long totalMemory = runtime.totalMemory(); // in bytes
+        long freeMemory = runtime.freeMemory(); // in bytes
         long usedMemory = totalMemory - freeMemory;
 
         long totalMemoryInMB = totalMemory / (1024 * 1024);
         long usedMemoryInMB = usedMemory / (1024 * 1024);
 
-        return String.format("%d MB / %d MB (%.2f%% used)", usedMemoryInMB, totalMemoryInMB, (double) usedMemory / totalMemory * 100);
+        return String.format(
+                "%d MB / %d MB (%.2f%% used)",
+                usedMemoryInMB, totalMemoryInMB, (double) usedMemory / totalMemory * 100);
     }
 
     public static String getCpuUsage() {
@@ -51,15 +53,16 @@ public class SystemMetricsCollector {
     }
 
     public static String getDiskUsage() {
-        File root = new File("/");
-        long totalSpace = root.getTotalSpace();  // in bytes
-        long freeSpace = root.getUsableSpace();  // in bytes
+        File jenkinsHome = Jenkins.get().getRootDir();
+        long totalSpace = jenkinsHome.getTotalSpace(); // in bytes
+        long freeSpace = jenkinsHome.getUsableSpace(); // in bytes
         long usedSpace = totalSpace - freeSpace;
 
         long totalSpaceInGB = totalSpace / (1024 * 1024 * 1024);
         long usedSpaceInGB = usedSpace / (1024 * 1024 * 1024);
 
-        return String.format("%d GB / %d GB (%.2f%% used)", usedSpaceInGB, totalSpaceInGB, (double) usedSpace / totalSpace * 100);
+        return String.format(
+                "%d GB / %d GB (%.2f%% used)", usedSpaceInGB, totalSpaceInGB, (double) usedSpace / totalSpace * 100);
     }
 
     public static String getJenkinsUptime() {
