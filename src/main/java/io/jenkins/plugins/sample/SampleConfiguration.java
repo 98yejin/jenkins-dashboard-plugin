@@ -19,6 +19,10 @@ public class SampleConfiguration extends GlobalConfiguration {
         load();
     }
 
+    public static SampleConfiguration get() {
+        return GlobalConfiguration.all().get(SampleConfiguration.class);
+    }
+
     @DataBoundSetter
     public void setShowUptime(boolean showUptime) {
         this.showUptime = showUptime;
@@ -90,7 +94,10 @@ public class SampleConfiguration extends GlobalConfiguration {
     }
 
     public String getJenkinsUptime() {
-        return SystemMetricsCollector.getJenkinsUptime();
+        System.out.println("Jenkins Uptime called: ");
+        String uptime = SystemMetricsCollector.getJenkinsUptime();
+        System.out.println("Uptime: " + uptime);
+        return uptime;
     }
 
     public int getOnlineAgentCount() {

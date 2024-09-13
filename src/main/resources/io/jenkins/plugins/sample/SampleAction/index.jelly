@@ -1,0 +1,9 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:l="/lib/layout">
+    <l:layout title="Sample Action">
+        <l:main-panel>
+            <h1>Sample Action Page</h1>
+            <p>Current Setting: ${it.jenkinsUptime}</p>
+        </l:main-panel>
+    </l:layout>
+</j:jelly>
